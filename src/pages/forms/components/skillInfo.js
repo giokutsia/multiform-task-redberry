@@ -6,7 +6,7 @@ const SkillInfo = ({inputValue,handleChange}) => {
     const {error} = useForm()
     const [skillApi, setSkillApi] = useState([])
     useEffect (() => {
-        console.log('effect')
+        
         
           dataServices
           .getAll()
@@ -18,7 +18,7 @@ const SkillInfo = ({inputValue,handleChange}) => {
         
         
       }, [])
-    console.log("skills", skillApi)
+    // console.log("skills", skillApi)
     return ( 
         <div>
             

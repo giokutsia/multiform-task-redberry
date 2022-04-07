@@ -8,15 +8,13 @@ import SkillInfo from './components/skillInfo';
 
 const FormPage = () => {
     
-    const formNext = () => {
-        console.log("next")
-        console.log("inputvalue",inputValue)
-    }
+    
     const counter = useForm()
-    const {handleChange, inputValue, error, increase} = useForm(formNext)
+    const {handleNavigation, handleChange, inputValue, error, value, validateNavButt} = useForm()
+    
     // console.log("obj", inputValue.map(i => i.firstname))
     const showFormsByPages = () => {
-        switch(counter.value){
+        switch(value){
             case 0:
                 return <PersonalInfo inputValue={inputValue} handleChange={handleChange} error={error} />
             case 1:
@@ -33,8 +31,8 @@ const FormPage = () => {
             {counter.value === 1 && <SkillInfo />}
             <NavButton counter = {counter} /> */}
             {showFormsByPages()}
-            <NavButton counter={increase} error={error}  inputValue={inputValue}/>
-            
+            <NavButton handleNavigation={ handleNavigation } error={error}  inputValue={inputValue}/>
+            {}
            
         </div>
     );

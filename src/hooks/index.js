@@ -4,11 +4,11 @@ import {omit} from "lodash"
 
 
 
-const useForm = (collBack) => {
+const useForm = () => {
     const [value, setValue] = useState(0)
     const [inputValue, setInputValue] = useState(
       {
-        first_name:'',
+        first_name:'giorgi',
         last_name:'',
         email:'',
         phone:'',
@@ -22,14 +22,16 @@ const useForm = (collBack) => {
         something_special: '',
         skills: []
       }
+    
+    
     )
     const [error, setError] = useState('')
-
+  
    
     const validationInput = (event, name, value) => {
       switch (name) {
         case 'first_name':
-          if (value.length < 5) {
+          if (value.length < 5 || value === '') {
             setError({
               ...error,
               first_name:"les then 5 char"
@@ -108,32 +110,54 @@ const useForm = (collBack) => {
       // console.log("giorgi")
       // setInputValue(inputValue.map)
     }
-    
-   
-  const increase = (e) => {
-    // if(e) e.preventDefault()
-    
-    setValue(value +1)
-    
-    
-    
-    
+const validateNavButt = (name) => {
+  switch (name) {
+    case 'forward':
+      if(value === 0 && ( Object.keys(error).length===0 && inputValue.first_name.length !== 0 
+      && inputValue.last_name.length !== 0 
+      && inputValue.email.length !== 0
+      ) ){
+        setValue(value+1)
+        
+      } 
+     
+      
+      console.log("name",Object.keys(error).length)
+    case 'back':
+      if (value !==0){
+        setValue(value-1)
+      }
+    default:
+      break;
   }
+}
+
+const handleNavigation = (e) => {
+  const name = e.target.name
+ 
+  validateNavButt(name)
+    
+}
 
   const decrease = () => {
   value !== 0 &&
     setValue(value - 1)
   }
   
+
+  
     return {
       value, 
       inputValue,
       error,
-      increase,
+      handleNavigation,
       decrease,
-      handleChange
+      handleChange,
       
     }
+  }
+  export const dataFetch = (url) => {
+    
   }
   export default useForm
  
