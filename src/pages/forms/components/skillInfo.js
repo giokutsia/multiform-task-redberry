@@ -18,12 +18,20 @@ const SkillInfo = ({inputValue,handleChange}) => {
         
         
       }, [])
-    // console.log("skills", skillApi)
+    console.log("skills", skillApi.map(i => i.title))
     return ( 
         <div>
             
             <h1>skillinfo</h1>
-            <input name="skill" value={inputValue.devtalk_topic} onChange={handleChange}/>
+          <select defaultValue='Skills'>
+            <option key={'selected'} disabled hidden defaultValue='Skills' > Skills </option>
+          {
+            skillApi.map(i => 
+              <option key={i.id} value={i.title}>{i.title}</option>
+              )
+          }
+          </select>
+          
         </div>
      );
 }

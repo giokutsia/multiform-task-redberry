@@ -5,10 +5,10 @@ import {omit} from "lodash"
 
 
 const useForm = () => {
-    const [value, setValue] = useState(0)
+    const [value, setValue] = useState(1)
     const [inputValue, setInputValue] = useState(
       {
-        first_name:'giorgi',
+        first_name:'',
         last_name:'',
         email:'',
         phone:'',
