@@ -20,7 +20,12 @@ const useForm = () => {
         will_organize_devtalk: '',
         devtalk_topic:'',
         something_special: '',
-        skills: []
+        skills: [
+          {
+            id:'0',
+            experience:'0'
+          }
+        ]
       }
     
     
@@ -102,6 +107,8 @@ const useForm = () => {
       
       const name = e.target.name
       const newValue = e.target.value
+      console.log("target", newValue)
+      console.log("name", name)
       validationInput(e, name, newValue)
       setInputValue({
         ...inputValue,
@@ -156,8 +163,6 @@ const handleNavigation = (e) => {
       
     }
   }
-  export const dataFetch = (url) => {
-    
-  }
+ 
   export default useForm
  
